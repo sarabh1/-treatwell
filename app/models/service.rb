@@ -1,3 +1,3 @@
 class Service < ApplicationRecord
-  belongs_to :shop
+  belongs_to :shop, dependent: :destroy
 end
