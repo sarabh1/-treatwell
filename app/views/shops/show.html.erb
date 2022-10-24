@@ -1,0 +1,16 @@
+
+<div class="shopshow">
+  <%= @shop.name %>
+  <%= @shop.address %>
+  <%= @shop.telephone %>
+  <%= @shop.description %>
+</div>
+
+
+  <p> Vos prestations :  </p>
+    <%= @shop.services %>
+    <%#= @shop.service %>
+
+  <% if @user == current_user %>
+    <%= link_to "ajouter", new_service_path(@shop) %>
+  <% end %>
