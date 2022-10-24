@@ -1,4 +1,8 @@
 <% @shops.each do |shop| %>
 <%= shop.name %>
 <%= shop.address %>
+<% shop.services.each do |service| %>
+  <%= service.title %>
+  <%=  service.price %>
+  <% end %>
 <% end %>
