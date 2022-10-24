@@ -1,8 +1,10 @@
 <% @shops.each do |shop| %>
-<%= shop.name %>
-<%= shop.address %>
-<% shop.services.each do |service| %>
-  <%= service.title %>
-  <%=  service.price %>
-  <% end %>
+  <ul>
+    <li><%= shop.name %></li>
+    <li><%= shop.address %></li>
+    <% shop.services.each do |service| %>
+      <li><%= service.title %></li>
+      <li><%=  service.price %></li>
+    <% end %>
+  </ul>
 <% end %>
