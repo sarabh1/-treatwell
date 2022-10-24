@@ -6,10 +6,12 @@
 
 <div class="indexresa">
   <% @services.each do |service| %>
-    <p><%= service.title %></p>
-    <ul>
-      <li><%= service.price %></li>
-      <li><%= service.employees %></li>
-    </ul>
+    <div class="prestacard">
+      <p><%= service.title %></p>
+      <ul>
+        <li><%= service.price %></li>
+        <li><%= service.employees %></li>
+      </ul>
+    </div>
   <% end %>
 </div>
