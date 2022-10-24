@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :services
   resources :shops
+  
   get "home", to: 'pages#home'
   get "prestation", to: "services#index"
 

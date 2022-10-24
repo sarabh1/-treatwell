@@ -12,6 +12,11 @@
               <p><%=  service.price %></p>
             <% end %>
           </ul>
+
+      <%= link_to "Voir les détails", shop_path(shop) %>
+      <% if @user = current_user %>
+        <%= link_to "Edit" %>
+      <% end %>
     </div>
   <% end %>
 </div>
