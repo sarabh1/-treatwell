@@ -9,3 +9,11 @@
       shop.service.price
   end
     </div>
+
+ICI:  <% @services.each do |service| %>
+    <ul>
+      <li><%= service.title %></li>
+      <li><%= service.price %></li>
+      <li><%= service.employees %></li>
+      <% end %>
+    </ul>

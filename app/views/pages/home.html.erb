@@ -8,21 +8,33 @@
   COIFFURE | VISAGE | MAINS & PIEDS | ÉPILATION | CORPS | MASSAGE | HOMME | SPA | LE BLOG | IDENTITÉ
 
   <div class="banner">
-
-    <div class="searchbox">
-    <table></table>
-      <input type="search" id="presta-search" name="presta" placeholder ="Prestation:">
-      <input type="search" id="shop-search" name="shop" placeholder ="Etablissement:">
-      <input type="search" id="address" name="address" placeholder ="Ville:">
-      <button>Je recherche</button>
-    </div>
-
     <div class="bgimg">
-      <img src="https://cdn1.treatwell.net/images/view/v2.i6107671.w925.h390.xA371085B.jpg" alt="">
+
+      <div class="searchbox">
+        <table></table>
+          <div class="w3-bar w3-white">
+            <a href="#" class="w3-bar-item w3-button">Prestation</a>
+            <a href="#" class="w3-bar-item w3-button">Etablissement</a>
+          </div>
+          <input type="search" id="presta-search" name="presta" placeholder ="Prestation:">
+          <input type="search" id="shop-search" name="shop" placeholder ="Etablissement:">
+          <input type="search" id="address" name="address" placeholder ="Ville:">
+          <button>Je recherche</button>
+      </div>
+
+      <div class="bannertext">
+        <h3>Derrière chaque <br>rendez-vous</h3>
+      </div>
+
+      <div class="bleu">
+        <img src="https://cdn1.treatwell.net/images/view/v2.i6107671.w925.h390.xA371085B.jpg" alt="">
+      </div>
+
     </div>
-
-
   </div>
+
+  <%= link_to"perstations", services_path %>
+  <%= link_to "etablissements", shops_path %>
 
   <div class="triptic">
 
@@ -48,11 +60,21 @@
 
   <div class="giftcard">
 
+    <div class="giftext">
+
+      <p>Offrez-leur un vrai moment de bien-être avec la carte cadeau Treatwell.</p>
+
+    </div>
+
     <img src="https://cdn1.treatwell.net/images/view/v2.i5585180.w1080.h384.x322E1EFD.png" alt="">
 
   </div>
 
   <div class="mobile">
+
+    <div class="mobiletext">
+      <p>Réservez vos soins beauté préférés sur l’app Treatwell et découvrez de belles adresses à deux pas de chez vous.</p>
+    </div>
 
     <img src="https://cdn1.treatwell.net/images/view/v2.i2527308.w499.h256.xCAA3AE27.svg" alt="">
 
