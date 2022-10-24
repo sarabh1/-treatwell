@@ -1,20 +1,17 @@
+
+
 <h1> @service.title </h1>
 
-  @service.each do |service, shop|
-    <div class="servicecard">
-      service.shop.name
-      service.shop.address
-      service.shop.reviews
-      service.shop.description
-      shop.service.price
-  end
+<%= link_to "Back", home_path %>
+
+<div class="indexresa">
+  <% @services.each do |service| %>
+    <div class="prestacard">
+      <p><%= service.title %></p>
+      <ul>
+        <li><%= service.price %></li>
+        <li><%= service.employees %></li>
+      </ul>
     </div>
-
-ICI:  <% @services.each do |service| %>
-    <ul>
-      <li><%= service.title %></li>
-      <li><%= service.price %></li>
-      <li><%= service.employees %></li>
-
-    </ul>
-    <% end %>
+  <% end %>
+</div>

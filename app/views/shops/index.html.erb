@@ -1,10 +1,17 @@
-<% @shops.each do |shop| %>
-  <ul>
-    <li><%= shop.name %></li>
-    <li><%= shop.address %></li>
-    <% shop.services.each do |service| %>
-      <li><%= service.title %></li>
-      <li><%=  service.price %></li>
-    <% end %>
-  </ul>
-<% end %>
+
+<%= link_to "Back", home_path %>
+
+<div class="indexshops">
+  <% @shops.each do |shop| %>
+    <div class="shopcard">
+        <p><%= shop.name %></p>
+          <ul>
+            <li><%= shop.address %></li>
+            <% shop.services.each do |service| %>
+              <li><%= service.title %></li>
+              <p><%=  service.price %></p>
+            <% end %>
+          </ul>
+    </div>
+  <% end %>
+</div>
