@@ -8,9 +8,13 @@
 
 
   <p> Vos prestations :  </p>
-    <%= @shop.services %>
+    <% @shop.services.each do |service| %>
+      <p><%= service.title %></p>
+      <p><%= service.price %></p>
+      <p><%= service.duration %></p>
+    <% end %>
     <%#= @shop.service %>
 
   <% if @user == current_user %>
-    <%= link_to "ajouter", new_service_path(@shop) %>
+    <%= link_to "ajouter", new_shop_service_path(@shop) %>
   <% end %>

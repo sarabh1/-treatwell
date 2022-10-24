@@ -1,5 +1,5 @@
- <%= simple_form_for @service do |f| %>
-          <%= f.input :shop %>
+ <%= simple_form_for [@shop, @service] do |f| %>
+          <%= f.input :shop_id, input_html: {value: params[:shop_id]} %>
           <%= f.input :title %>
           <%= f.input :price%>
           <%= f.input :duration %>

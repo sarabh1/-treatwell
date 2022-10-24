@@ -27,7 +27,7 @@ class ShopsController < ApplicationController
 
   def show
     @user = current_user
-    # @service = Service.find(params[:id])
+    @service = Service.find(params[:id])
     @shops = Shop.all
     @shop = Shop.find(params[:id])
   end
@@ -39,7 +39,6 @@ class ShopsController < ApplicationController
 
   def update
     @shop = Shop.find(params[:id])
-
     @user = current_user
     @shop.user = @user
     redirect_to shops_path if @shop.update(shop_params_update)

@@ -11,7 +11,10 @@
       <ul>
         <li> <%= service.shop.name.upcase %> </li>
         <li><%= service.price %></li>
-        <li><%= service.employees %></li>
+        <li> <%= service.duration %> </li>
+        <li><%= service.employees.each do |employee| %></li>
+        <li> <%= employee.first_name %> </li>
+        <%end %>
       </ul>
     </div>
   <% end %>
