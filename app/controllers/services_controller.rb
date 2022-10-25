@@ -14,9 +14,9 @@ class ServicesController < ApplicationController
 
   def create
     # @shop = Shop.find(params[:shop_id])
-    @service = Service.new(service_params)
     @user = current_user
-    # @service.shop = @shop
+    @service = Service.new(service_params)
+    @service.shop = @shop
     redirect_to shops_path if @service.save
   end
 
@@ -34,7 +34,7 @@ class ServicesController < ApplicationController
   def update
     @service = Service.find(params[:id])
     @user = current_user
-    # @service.shop = @shop
+    @service.shop = @shop
     redirect_to shops_path if @service.update(service_params_update)
   end
 
