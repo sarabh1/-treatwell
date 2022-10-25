@@ -7,7 +7,7 @@ class ShopsController < ApplicationController
 
   def show
     @user = current_user
-    @service = Service.find(params[:id])
+    # @service = Service.find(params[:id])
     @shops = Shop.all
     @shop = Shop.find(params[:id])
   end
@@ -47,8 +47,8 @@ class ShopsController < ApplicationController
 
   def destroy
     @shop = Shop.find(params[:id])
-    @shop.user = current_user
-    redirect_to shops_path if @shop.destroy
+    @shop.user = @user
+    redirect_to shops_path if @shop.destroy!
   end
 
   private
