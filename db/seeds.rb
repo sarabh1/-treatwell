@@ -5,9 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Reservation.destroy_all
+Employee.destroy_all
 Service.destroy_all
-# Employee.destroy_all
+Reservation.destroy_all
 Shop.destroy_all
 User.destroy_all
 
@@ -34,12 +34,12 @@ service_7 = Service.create!(shop: shop_3, title:"french manucure", price:"60 €
 service_8 = Service.create!(shop: shop_3, title:"épilation maillot", price:"30 €", duration:"30 min")
 
 #EMPLOYEES
-# employee_1= employee.create(service: service_1, first_name:"Anna")
+employee_1= employee.create(service: service_1, first_name:"Anna")
 
-# employee_2= employee.create(service: service_4,first_name:"Marco")
-# employee_3= employee.create(service: service_6,first_name:"Jenny")
+employee_2= employee.create(service: service_4,first_name:"Marco")
+employee_3= employee.create(service: service_6,first_name:"Jenny")
 
-# employee_4= employee.create(service: service_7,first_name:"Louisa")
+employee_4= employee.create(service: service_7,first_name:"Louisa")
 
 #RESERVATIONS
 resa_1 = Reservation.create(user: user_1, service: service_1, total_price:"60€", start_date:Date.today, end_date:Date.today + 1)
