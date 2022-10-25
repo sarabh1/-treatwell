@@ -34,7 +34,7 @@ class ShopsController < ApplicationController
 
   def edit
     @user = current_user
-    @shop = Shop.find(params[:format])
+    @shop = Shop.find(params[:id])
   end
 
   def update
@@ -45,17 +45,18 @@ class ShopsController < ApplicationController
   end
 
   def destroy
-    @shop = Shop.find(params[:format])
+    @user = current_user
+    @shop = Shop.find(params[:id])
     redirect_to shops_path if @shop.destroy
   end
 
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :tel, :email, :address, :description, :user)
+    params.require(:shop).permit(:name, :telephone, :email, :address, :description, :user_id)
   end
 
   def shop_params_update
-    params.require(:shop).permit(:name, :tel, :email, :address, :description)
+    params.require(:shop).permit(:name, :telephone, :email, :address, :description)
   end
 end

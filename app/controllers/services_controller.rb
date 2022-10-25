@@ -13,11 +13,11 @@ class ServicesController < ApplicationController
   end
 
   def create
-    # @shop = Shop.find(params[:id])
+    # @shop = Shop.find(params[:shop_id])
     @service = Service.new(service_params)
     @user = current_user
     # @service.shop = @shop
-    redirect_to services_path if @service.save
+    redirect_to shops_path if @service.save
   end
 
   def show
@@ -28,19 +28,21 @@ class ServicesController < ApplicationController
 
   def edit
     @user = current_user
-    @service = Service.find(params[:format])
+    @service = Service.find(params[:id])
   end
 
   def update
     @service = Service.find(params[:id])
     @user = current_user
-    @service.shop = @shop
-    redirect_to services_path if @service.update(service_params_update)
+    # @service.shop = @shop
+    redirect_to shops_path if @service.update(service_params_update)
   end
 
   def destroy
-    @service = Service.find(params[:format])
-    redirect_to services_path if @service.destroy
+    @service = Service.find(params[:id])
+    @user = current_user
+    @shop = Shop.find(params[:shop_id])
+    redirect_to shops_path if @service.destroy
   end
 
   private
@@ -50,6 +52,6 @@ class ServicesController < ApplicationController
   end
 
   def service_params_update
-    params.require(:service).permit(:name, :duration, :price, :shop_id)
+    params.require(:service).permit(:title, :duration, :price, :shop_id)
   end
 end

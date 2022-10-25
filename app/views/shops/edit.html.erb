@@ -1,0 +1,10 @@
+<%= simple_form_for @shop do |f| %>
+  <% f.input :user_id, input_html: {value: params[:user_id]} %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :telephone %>
+  <%= f.input :email %>
+  <%= f.input :description %>
+  <br>
+  <%= f.button :submit %>
+<% end %>
