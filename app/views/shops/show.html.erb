@@ -1,17 +1,14 @@
-
 <div class="shopshow">
   <%= @shop.name %>
   <%= @shop.address %>
   <%= @shop.telephone %>
   <%= @shop.description %>
+   <% if @shop.user == current_user %>
+          <%= link_to "modifier", edit_shop_path(@shop) %>
+          <%= link_to "supprimer",shop_path(@shop.id, @shop.user.id),
+              data: {:confirm => 'Etes-vous sûr de vouloir supprimer cet établissement ?'}, method: :delete %>
+        <% end %>
 
-  <% if @shop.user == current_user %>
-    <%= link_to "modifier", edit_shop_path(@shop) %>
-  <% end %>
-  <% if @shop.user == current_user %>
-    <%= link_to "supprimer", shop_path(@shop.id,), method: :delete,
-        data: {:confirm => 'Etes-vous sûr de vouloir supprimer cet établissement ?'} %>
-  <% end %>
 </div>
 
 
@@ -21,7 +18,7 @@
       <p><%= service.price %></p>
       <p><%= service.duration %></p>
         <% if @shop.user == current_user %>
-          <%= link_to "modifier", edit_shop_service_path(service.id, service.shop.id ) %>
+          <%= link_to "modifier", edit_shop_service_path(service.shop.id, service.id) %>
           <%= link_to "supprimer", service_path(service.id, service.shop.id),
               data: {:confirm => 'Etes-vous sûr de vouloir supprimer cette prestation ?'}, method: :delete %>
         <% end %>

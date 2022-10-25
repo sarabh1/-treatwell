@@ -1,6 +1,4 @@
 class ServicesController < ApplicationController
-
-
   def index
     @user = current_user
     @services = Service.all
@@ -9,14 +7,14 @@ class ServicesController < ApplicationController
   def new
     @user = current_user
     @service = Service.new
-  #   @shop = Shop.find(params[:id])
+    # @shop = Shop.find(params[:id])
   end
 
   def create
-    # @shop = Shop.find(params[:shop_id])
-    @user = current_user
+    @shop = Shop.find(params[:id])
     @service = Service.new(service_params)
     @service.shop = @shop
+    @user = current_user
     redirect_to shops_path if @service.save
   end
 
@@ -34,14 +32,15 @@ class ServicesController < ApplicationController
   def update
     @service = Service.find(params[:id])
     @user = current_user
-    @service.shop = @shop
+    # @service.shop = @shop
     redirect_to shops_path if @service.update(service_params_update)
   end
 
   def destroy
     @service = Service.find(params[:id])
     @user = current_user
-    @service.shop = @shop
+    @shop = Shop.find(params[:id])
+    # @service.shop = @shop
     # @shop = Shop.find(params[:shop_id])
     redirect_to shops_path if @service.destroy
   end
@@ -53,6 +52,6 @@ class ServicesController < ApplicationController
   end
 
   def service_params_update
-    params.require(:service).permit(:title, :duration, :price, :shop_id)
+    params.require(:service).permit(:title, :duration, :price)
   end
 end

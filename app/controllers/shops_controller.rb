@@ -1,5 +1,4 @@
 class ShopsController < ApplicationController
-
   def index
     @user = current_user
     @shops = Shop.all
@@ -11,12 +10,6 @@ class ShopsController < ApplicationController
     @shops = Shop.all
     @shop = Shop.find(params[:id])
   end
-  # def show
-  #   @user = current_user
-  #   # @service = Service.find(params[:id])
-  #   @shops = Shop.all
-  #   @shop = Shop.find(params[:id])
-  # end
 
   def new
     @user = current_user
@@ -31,8 +24,6 @@ class ShopsController < ApplicationController
     redirect_to shops_path if @shop.save
   end
 
-
-
   def edit
     @user = current_user
     @shop = Shop.find(params[:id])
@@ -46,9 +37,10 @@ class ShopsController < ApplicationController
   end
 
   def destroy
+    @user = current_user
     @shop = Shop.find(params[:id])
-    @shop.user = @user
-    redirect_to shops_path if @shop.destroy!
+    @shop.user = current_user
+    redirect_to shops_path if @shop.destroy
   end
 
   private
