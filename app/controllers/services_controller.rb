@@ -41,7 +41,7 @@ class ServicesController < ApplicationController
   def destroy
     @service = Service.find(params[:id])
     @user = current_user
-    @shop = Shop.find(params[:shop_id])
+    @shop = Shop.find(params[:id])
     redirect_to shops_path if @service.destroy
   end
 
