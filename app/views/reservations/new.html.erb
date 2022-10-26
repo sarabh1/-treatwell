@@ -1,0 +1,6 @@
+<%= simple_form_for [@service, @reservation] do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.input :service_id, input_html: {value: params[:service_id]} %>
+  <%= f.button :submit %>
+<% end %>

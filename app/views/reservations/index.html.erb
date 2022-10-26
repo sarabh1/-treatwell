@@ -1,0 +1,22 @@
+<h1> Mes réservations :</h1>
+
+Faudra trier les résa passées et celles à venir
+
+<p>
+  @reservations.each do |reservation|
+    reservation.start_date & end_date (Flatpicker)
+    reservation.services.each do |service|
+      service.shop
+      service.title
+      service.price
+      service.duration
+      service.employee
+    end
+    ---
+    reservation.total_price
+  end
+
+  <%= link-to "annuler" %>
+  <%= link_to "voir" %>
+
+</p>
