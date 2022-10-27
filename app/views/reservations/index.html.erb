@@ -16,7 +16,7 @@ Faudra trier les résa passées et celles à venir
     reservation.total_price
   end
 
-  <%= link-to "annuler" %>
+  <%= link_to "annuler", reservation_path, method: :delete, data: {confirm: "Voulez-vous vraiment annuler cette réservation ?"} %>
   <%= link_to "voir" %>
 
 </p>

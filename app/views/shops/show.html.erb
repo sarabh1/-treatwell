@@ -5,8 +5,8 @@
   <%= @shop.description %>
    <% if @shop.user == current_user %>
           <p><%= link_to "modifier", edit_shop_path(@shop.id) %> |
-          <%= link_to "supprimer", shop_path(@shop.id),
-             data: {confirm: 'Etes-vous sûr de vouloir supprimer cet établissement ?'},  turbo_method: :delete  %></p>
+          <%= link_to "supprimer", @shop,
+             data: {confirm: 'Etes-vous sûr de vouloir supprimer cet établissement ?'}, method: :delete  %></p>
         <% end %>
 
 </div>
@@ -22,7 +22,7 @@
           <%= link_to "supprimer", service_path(service.id, service.shop.id),
               data: {:confirm => 'Etes-vous sûr de vouloir supprimer cette prestation ?'}, method: :delete %></p>
         <% elsif @shop.user != current_user %>
-          <%= link_to "réserver","#" %>
+          <%= link_to "réserver", new_service_reservation_path(@user.id, service.id) %>
         <% end %>
     <% end %>
     <%#= @shop.service %>

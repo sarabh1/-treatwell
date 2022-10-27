@@ -20,36 +20,36 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
-    @service =Service.find(params[:service_id])
+    @service = Service.find(params[:service_id])
     @user = current_user
-    @reservation.user = current_user
+    # @reservation.service = @service
     # authorize @reservation
 
-      if @reservation.save
-         redirect_to reservations_path
+      if @reservation.save!
+        redirect_to reservations_path
       else
         render :new
       end
   end
 
-  def edit
-    @user = current_user
-    @reservation = Reservation.find(params[:format])
-    # authorize @reservation
-  end
+  # def edit
+  #   @user = current_user
+  #   @reservation = Reservation.find(params[:format])
+  #   # authorize @reservation
+  # end
 
-  def update
-    @reservation = Reservation.find(params[:id])
-    @user = current_user
-    @reservation.user = @user
-    # authorize @reservation
+  # def update
+  #   @reservation = Reservation.find(params[:id])
+  #   @user = current_user
+  #   @reservation.user = @user
+  #   # authorize @reservation
 
-    if @reservation.update(reservation_params_update)
-      redirect_to reservation_path
-    else
-      render :edit
-    end
-  end
+  #   if @reservation.update(reservation_params_update)
+  #     redirect_to reservation_path
+  #   else
+  #     render :edit
+  #   end
+  # end
 
   def destroy
     @reservation = Reservation.find(params[:format])
@@ -64,7 +64,7 @@ class ReservationsController < ApplicationController
     private
 
   def reservation_params
-    params.require(:reservation).permit(:end_date, :start_date, :service_id)
+    params.require(:reservation).permit(:end_date, :start_date, :service_id, :user_id)
   end
 
   def reservation_params_update
