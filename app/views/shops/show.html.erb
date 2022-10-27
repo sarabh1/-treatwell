@@ -22,7 +22,7 @@
           <%= link_to "supprimer", service_path(service.id, service.shop.id),
               data: {:confirm => 'Etes-vous sûr de vouloir supprimer cette prestation ?'}, method: :delete %></p>
         <% elsif @shop.user != current_user %>
-          <%= link_to "réserver", new_service_reservation_path(@user.id, service.id) %>
+          <%= link_to "réserver", new_service_reservation_path(service.id, service.shop.id ) %>
         <% end %>
     <% end %>
     <%#= @shop.service %>
