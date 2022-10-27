@@ -37,10 +37,14 @@ class ShopsController < ApplicationController
   end
 
   def destroy
-    @user = current_user
     @shop = Shop.find(params[:id])
-    @shop.user = current_user
-    redirect_to shops_path if @shop.destroy
+    # @user = current_user
+    # @shop.user = current_user
+    if @shop.destroy
+      redirect_to shops_path
+    # else
+    #   Rails.logger.info(@shop.errors.full_messages)
+    end
   end
 
   private

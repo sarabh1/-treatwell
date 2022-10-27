@@ -4,29 +4,34 @@
   <%= @shop.telephone %>
   <%= @shop.description %>
    <% if @shop.user == current_user %>
-          <%= link_to "modifier", edit_shop_path(@shop.id, @shop.user.id) %>
-          <%= link_to "supprimer", shop_path(@shop.id, @shop.user.id),
-             data: { method: :delete , confirm: 'Etes-vous sûr de vouloir supprimer cet établissement ?'} %>
+          <p><%= link_to "modifier", edit_shop_path(@shop.id) %> |
+          <%= link_to "supprimer", @shop,
+             data: {confirm: 'Etes-vous sûr de vouloir supprimer cet établissement ?'}, method: :delete  %></p>
         <% end %>
 
 </div>
 
 
-  <p> Vos prestations :  </p>
+  <p> Prestations proposées :  </p>
     <% @shop.services.each do |service| %>
       <p><%= service.title %></p>
       <p><%= service.price %></p>
       <p><%= service.duration %></p>
         <% if @shop.user == current_user %>
-          <%= link_to "modifier", edit_shop_service_path(service.shop.id, service.id) %>
+          <p><%= link_to "modifier", edit_shop_service_path(service.shop.id, service.id) %> |
           <%= link_to "supprimer", service_path(service.id, service.shop.id),
-              data: {:confirm => 'Etes-vous sûr de vouloir supprimer cette prestation ?'}, method: :delete %>
+              data: {:confirm => 'Etes-vous sûr de vouloir supprimer cette prestation ?'}, method: :delete %></p>
+        <% elsif @shop.user != current_user %>
+          <%= link_to "réserver", new_service_reservation_path(@user.id, service.id) %>
         <% end %>
     <% end %>
     <%#= @shop.service %>
     <br>
+    <br>
+    <br>
 
-
-  <% if @shop.user == current_user %>
-    <%= link_to "ajouter une prestation", new_shop_service_path(@shop) %>
-  <% end %>
+  <p>
+    <% if @shop.user == current_user %>
+      <%= link_to "ajouter une prestation", new_shop_service_path(@shop) %>
+    <% end %>
+  </p>
