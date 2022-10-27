@@ -2,6 +2,8 @@ class ReservationsController < ApplicationController
    def index
     @user = current_user
     @reservations = Reservation.all
+    # @reservation = Reservation.find(params[:reservation_id])
+    # @reservation.service = @service
     # @reservations = policy_scope(reservation).order(created_at: :desc)
   end
 
@@ -21,15 +23,14 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     @service = Service.find(params[:service_id])
-    @user = current_user
-    # @reservation.service = @service
-    # authorize @reservation
+    @services = Service.all
+    @reservation.user = @user
 
-      if @reservation.save!
-        redirect_to reservations_path
-      else
-        render :new
-      end
+    if @reservation.save
+      redirect_to reservations_path
+    else
+      render :new
+    end
   end
 
   # def edit
@@ -53,6 +54,8 @@ class ReservationsController < ApplicationController
 
   def destroy
     @reservation = Reservation.find(params[:format])
+    @reservation.user = @user
+    @service = Service.find(params[:id])
     # authorize @reservation
 
     if @reservation.destroy
@@ -64,7 +67,7 @@ class ReservationsController < ApplicationController
     private
 
   def reservation_params
-    params.require(:reservation).permit(:end_date, :start_date, :service_id, :user_id)
+    params.require(:reservation).permit(:end_date, :start_date, :service_id)
   end
 
   def reservation_params_update

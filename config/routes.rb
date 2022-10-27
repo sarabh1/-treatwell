@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :services
-  resources :reservations
+  # resources :reservations
 
   resources :shops do
     resources :services
@@ -14,8 +14,8 @@ Rails.application.routes.draw do
     resources :reservations,  only: [:new,:create,:delete, :destroy]
   end
 
-  # get "reservations", to: "reservations#index"
-  # get "reservation", to: "reservations#show"
+  get "reservations", to: "reservations#index"
+  get "reservation", to: "reservations#show"
 
   get "home", to: 'pages#home'
   get "prestations", to: "services#index"

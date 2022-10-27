@@ -16,6 +16,20 @@ Faudra trier les résa passées et celles à venir
     reservation.total_price
   end
 
+  <% @reservations.each do |reservation| %>
+    <ul>
+      <li><%= reservation.start_date %> <%= reservation.end_date %> </li>
+      <li> <%= reservation.total_price %> </li>
+    </ul>
+  <% end %>
+
+
+      <%#= service.employee %>
+
+
+
+
+
   <%= link_to "annuler", reservation_path, method: :delete, data: {confirm: "Voulez-vous vraiment annuler cette réservation ?"} %>
   <%= link_to "voir" %>
 
