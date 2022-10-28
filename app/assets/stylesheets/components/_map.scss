@@ -13,3 +13,9 @@ p .voir a {
   color: rgb(0, 156, 240);
   text-decoration: none;
 }
+.mapboxgl-ctrl-geocoder {
+  max-width: none;
+  width: 100%;
+  border: 1px solid lightgrey;
+  box-shadow: none;
+}
