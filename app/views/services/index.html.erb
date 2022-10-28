@@ -4,10 +4,33 @@
 
 <%= link_to "Back", home_path %>
 
+
+ <input id="searchbar" onkeyup="search_services()" type="text"
+          name="search" placeholder="prestation">
+
+
+<script>
+
+  const f = document.getElementById('searchbar');
+  const q = document.getElementById('services');
+  const google = 'https://www.google.com/search?q=site%3A+';
+  // const google = 'https://www.google.com/search?q=site%3A+';
+  const site = 'http://localhost:3000/';
+
+  function submitted(event) {
+    event.preventDefault();
+    const url = google + site + '+' + q.value;
+    const win = window.open(url, '_blank');
+    win.focus();
+  }
+
+  f.addEventListener('submit', submitted);
+</script>
+
 <div class="indexresa">
   <% @services.each do |service| %>
     <div class="prestacard">
-      <p><%= service.title %></p>
+      <p class ="services"><%= service.title %></p>
       <ul>
         <li> <%= service.shop.name.upcase %> </li>
         <li><%= service.price %></li>

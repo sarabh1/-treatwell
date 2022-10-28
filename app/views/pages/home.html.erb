@@ -16,8 +16,10 @@
             <a href="#" class="w3-bar-item w3-button">Prestation</a>
             <a href="#" class="w3-bar-item w3-button">Etablissement</a>
           </div>
-          <input type="search" id="presta-search" name="presta" placeholder ="Prestation:">
-          <input type="search" id="shop-search" name="shop" placeholder ="Etablissement:">
+          <input id="searchbar" onkeyup="search_services()" type="text"
+          name="search" placeholder="prestation">
+          <%# <input type="search" id="presta-search" name="presta" placeholder ="Prestation:" id = "searchbar"> %>
+          <%# <input type="search" id="shop-search" name="shop" placeholder ="Etablissement:"> %>
           <input type="search" id="address" name="address" placeholder ="Ville:">
           <button>Je recherche</button>
       </div>
