@@ -1,28 +1,35 @@
 
 <%= link_to "Back", home_path %>
 
-<div class="indexshops">
-  <% @shops.each do |shop| %>
-    <div class="shopcard">
-        <p><%= shop.name %></p>
-          <% if shop.photos.attached?%>
-              <% shop.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-            <% end %>
-          <% end %>
-          <ul>
-            <li><%= shop.address %></li>
-            <% shop.services.each do |service| %>
-              <li><%= service.title %></li>
-              <p><%=  service.price %></p>
+<div class="wrapper">
 
+  <div class="indexshops">
+    <% @shops.each do |shop| %>
+      <div class="shopcard">
+          <p><%= shop.name %></p>
+            <% if shop.photos.attached?%>
+                <% shop.photos.each do |photo| %>
+                <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
             <% end %>
-          </ul>
+            <ul>
+              <li><%= shop.address %></li>
+              <% shop.services.each do |service| %>
+                <li><%= service.title %></li>
+                <p><%=  service.price %></p>
+              <% end %>
+            </ul>
+        <%= link_to "Voir les détails", shop_path(shop) %>
+        <%# if @user = current_user %>
+          <%#= link_to "Edit", edit_service_path(shop) %>
+        <%# end %>
+      </div>
+    <% end %>
+  </div>
 
-      <%= link_to "Voir les détails", shop_path(shop) %>
-      <%# if @user = current_user %>
-        <%#= link_to "Edit", edit_service_path(shop) %>
-      <%# end %>
-    </div>
-  <% end %>
+  <div style="width: 100%; height: 600px;"
+  data-controller="mapbox"
+  data-mapbox-markers-value="<%= @markers.to_json %>"
+  data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
 </div>
