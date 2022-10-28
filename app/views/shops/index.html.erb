@@ -5,11 +5,17 @@
   <% @shops.each do |shop| %>
     <div class="shopcard">
         <p><%= shop.name %></p>
+          <% if shop.photos.attached?%>
+              <% shop.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+            <% end %>
+          <% end %>
           <ul>
             <li><%= shop.address %></li>
             <% shop.services.each do |service| %>
               <li><%= service.title %></li>
               <p><%=  service.price %></p>
+
             <% end %>
           </ul>
 
