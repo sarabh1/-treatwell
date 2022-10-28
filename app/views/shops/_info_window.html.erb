@@ -1,4 +1,9 @@
 <h4 class="name"><%= shop.name%> </h4>
 <p><%= shop.address %></p>
 <p><b><%= shop.telephone %></b></p>
+<% if shop.photos.attached?%>
+  <% shop.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 80, width: 100, crop: :fill %>
+  <% end %>
+<% end %>
 <p><%= link_to "Voir", shop_path(shop), class:"voir" %></p>
