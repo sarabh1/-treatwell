@@ -15,7 +15,7 @@ class ServicesController < ApplicationController
     @service = Service.new(service_params)
     # @service.shop = @shop
     @user = current_user
-    redirect_to shops_path if @service.save
+    redirect_to shop_path(@service.shop.id) if @service.save
   end
 
   def show
@@ -33,7 +33,7 @@ class ServicesController < ApplicationController
     @service = Service.find(params[:id])
     @user = current_user
     # @service.shop = @shop
-    redirect_to shops_path if @service.update(service_params_update)
+    redirect_to shop_path(@service.shop.id) if @service.update(service_params_update)
   end
 
   def destroy
@@ -41,7 +41,6 @@ class ServicesController < ApplicationController
     @user = current_user
   #  @shop = Shop.find(params[:id])
     @service.shop = @shop
-
     # @shop = Shop.find(params[:shop_id])
     redirect_to shops_path if @service.destroy
   end
@@ -49,10 +48,10 @@ class ServicesController < ApplicationController
   private
 
   def service_params
-    params.require(:service).permit(:title, :duration, :price, :shop_id)
+    params.require(:service).permit(:title, :duration, :price, :shop_id, employees: [])
   end
 
   def service_params_update
-    params.require(:service).permit(:title, :duration, :price)
+    params.require(:service).permit(:title, :duration, :price, employees: [])
   end
 end

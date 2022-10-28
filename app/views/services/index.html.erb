@@ -32,12 +32,9 @@
     <div class="prestacard">
       <p class ="services"><%= service.title %></p>
       <ul>
-        <li> <%= service.shop.name.upcase %> </li>
+        <h4> <%= service.shop.name.upcase %> </h4>
         <li><%= service.price %></li>
         <li> <%= service.duration %> </li>
-        <li><%#= service.employees.each do |employee| %></li>
-        <li> <%#= employee.first_name %> </li>
-        <%#end %>
       </ul>
     </div>
   <% end %>

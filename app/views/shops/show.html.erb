@@ -1,17 +1,24 @@
+<div class="shopphoto">
+ <% if @shop.photos.attached?%>
+    <% @shop.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  <% end %>
+</div>
+
 <div class="shopshow">
   <%= @shop.name %>
   <%= @shop.address %>
   <%= @shop.telephone %>
   <%= @shop.description %>
    <% if @shop.user == current_user %>
-          <p><%= link_to "modifier", edit_shop_path(@shop.id) %> |
-          <%= link_to "supprimer", @shop,
-             data: {confirm: 'Etes-vous sûr de vouloir supprimer cet établissement ?'}, method: :delete  %></p>
-        <% end %>
-
+      <p><%= link_to "modifier", edit_shop_path(@shop.id) %> |
+      <%= link_to "supprimer", @shop,
+          data: {confirm: 'Etes-vous sûr de vouloir supprimer cet établissement ?'}, method: :delete  %></p>
+    <% end %>
 </div>
 
-
+<div class="shoppresta">
   <p> Prestations proposées :  </p>
     <% @shop.services.each do |service| %>
       <p><%= service.title %></p>
@@ -35,3 +42,4 @@
       <%= link_to "ajouter une prestation", new_shop_service_path(@shop) %>
     <% end %>
   </p>
+</div>
