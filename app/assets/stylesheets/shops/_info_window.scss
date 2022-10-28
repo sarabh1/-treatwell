@@ -1,0 +1,24 @@
+// .mapboxgl-popup {
+//   max-width: 300px;
+// }
+
+// .mapboxgl-popup-content {
+//   text-align: center;
+//   font-family: "Open Sans", sans-serif;
+// }
+p .voir a {
+  padding: 3px 6px;
+  border-radius: 8px;
+  background-color: $green;
+  color: rgb(0, 156, 240);
+  text-decoration: none;
+}
+.mapboxgl-popup-content a.bookwindow{
+  text-decoration: none;
+  color: rgb(92, 202, 172);
+}
+
+.mapboxgl-popup-content a.bookwindow:hover{
+color: rgb(213, 145, 97);
+font-weight: 600;
+}
