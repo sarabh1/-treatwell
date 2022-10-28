@@ -5,6 +5,7 @@
   <%= f.input :telephone %>
   <%= f.input :email %>
   <%= f.input :description %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <br>
   <%= f.button :submit %>
 <% end %>
