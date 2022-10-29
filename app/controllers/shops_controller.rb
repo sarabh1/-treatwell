@@ -1,7 +1,16 @@
 class ShopsController < ApplicationController
   def index
     @user = current_user
-    @shops = Shop.all
+    if params[:query].present?
+      sql_query = " \
+      shops.name ILIKE :query \
+      OR services.title ILIKE :query \
+    "
+      @shops = Shop.joins(:services).where(sql_query, query: "%#{params[:query]}%")
+    # @shops = Shop.where("name ILIKE?", "%#{params[:query]}%")
+    else
+      @shops = Shop.all
+    end
 
     @markers = @shops.geocoded.map do |shop|
       {

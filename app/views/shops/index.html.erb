@@ -1,36 +1,75 @@
 
 <%= link_to "Back", home_path %>
+<div class="allindex">
 
-<div class="wrapper">
+  <div class="upindex">
 
-  <div class="indexshops">
-    <% @shops.each do |shop| %>
-      <div class="shopcard">
-          <p><%= shop.name %></p>
-            <% if shop.photos.attached?%>
-                <% shop.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-              <% end %>
-            <% end %>
-            <ul>
-              <li><%= shop.address %></li>
-              <% shop.services.each do |service| %>
-                <li><%= service.title %></li>
-                <p><%=  service.price %></p>
-              <% end %>
-            </ul>
-        <%= link_to "Voir les détails", shop_path(shop) %>
-        <%# if @user = current_user %>
-          <%#= link_to "Edit", edit_service_path(shop) %>
-        <%# end %>
-      </div>
-    <% end %>
+   <%# <input id="searchbar" onkeyup="search_services()" type="text"
+          name="search" placeholder="prestation">
+ %>
+
+<%# <script>
+
+  const f = document.getElementById('searchbar');
+  const q = document.getElementById('services');
+  // const google = 'https://www.google.com/search?q=site%3A+';
+  // // const google = 'https://www.google.com/search?q=site%3A+';
+  // const site = 'http://localhost:3000/';
+
+  function submitted(event) {
+    event.preventDefault();
+    const url = f.value + q.value;
+    const win = window.open(url, '_blank');
+    win.focus();
+  }
+
+  f.addEventListener('submit', submitted);
+</script> %>
+<div class="searchAR">
+<%= form_tag shops_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Prestation, établissement ..."
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+
+</div>
+
   </div>
 
+  <div class="wrapper">
+    <div class="indexshops">
+      <% @shops.each do |shop| %>
+        <div class="shopcard">
+            <p id ="myUL"><%= shop.name %></p>
+              <% if shop.photos.attached?%>
+                  <% shop.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+                <% end %>
+              <% end %>
+              <ul>
+                <li><%= shop.address %></li>
+                <% shop.services.each do |service| %>
+                  <li class ="li"><%= service.title %></li>
+                  <p><%=  service.price %></p>
+                <% end %>
+              </ul>
+          <%= link_to "Voir les détails", shop_path(shop) %>
+          <%# if @user = current_user %>
+            <%#= link_to "Edit", edit_service_path(shop) %>
+          <%# end %>
+        </div>
+      <% end %>
+    </div>
 
-    <div style="width: 100%; height: 600px;"
-    data-controller="mapbox"
-    data-mapbox-markers-value="<%= @markers.to_json %>"
-    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-  
+
+      <div style="width: 100%; height: 600px;"
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+  </div>
 </div>
